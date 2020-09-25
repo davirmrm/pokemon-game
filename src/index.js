@@ -6,7 +6,7 @@ import './index.scss';
 import App from './App';
 
 const app = (
-    <BrowserRouter>
+    <BrowserRouter> 
         <App />
     </BrowserRouter>
 );
