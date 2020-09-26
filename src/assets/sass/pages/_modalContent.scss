@@ -1,0 +1,160 @@
+.dados {
+  > h2 {
+    padding: 25px 15px;
+    position: relative;
+    text-align: center;
+    font-size: 2rem;
+
+    > button {
+      position: absolute;
+      background-color: transparent;
+      border-color: transparent;
+      margin: -4px 0 0 15px;
+    }
+  }
+
+  &__titulo {
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin: 20px 0;
+
+    &::before {
+      content: '';
+      border-top: 1px solid $color-neutral-500;
+      display: block;
+      width: 100%;
+    }
+
+    > span {
+      background-color: $color-neutral;
+      padding: 0 10px;
+      position: absolute;
+    }
+  }
+
+  &__img {
+    background-color: $color-neutral;
+    border-radius: 50%;
+    border: 5px solid $color-end-dark;
+    width: 230px;
+    height: 230px;
+    overflow: hidden;
+    margin: auto;
+
+    > img {
+      width: 100%;
+      margin: auto;
+    }
+
+    svg {
+      color: $color-end-dark;
+      font-size: 6em;
+    }
+  }
+
+  &__info {
+    display: table;
+    text-align: center;
+    width: 100%;
+
+    > h3 {
+      border-right: 1px solid $color-neutral-500;
+      display: table-cell;
+      font-size: 2rem;
+      width: calc(100% / 3);
+
+      > small {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+      }
+    }
+
+    > h3:last-child {
+      border-right: none;
+    }
+  }
+  &__tipo {
+    text-align: center;
+    font-weight: 700;
+
+    &__item {
+      padding: 5px 15px;
+      background-color: $color-green;
+      border: 1px solid $color-green;
+      border-radius: 4.2rem;
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+      color: $color-neutral;
+      margin: 0 5px;
+      letter-spacing: 1px;
+    }
+    .purple {
+      background-color: $color-purple;
+      border: 1px solid $color-purple;
+    }
+  }
+
+  &__habilidades {
+    text-align: center;
+    font-weight: 700;
+  }
+
+  &__estatisticas {
+    font-weight: 700;
+    > p {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+
+      > strong {
+        display: flex;
+        align-items: center;
+        > svg {
+          margin-right: 10px;
+        }
+      }
+
+      > span {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.editar-nome {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: 10px;
+  z-index: 3;
+
+  input {
+    box-shadow: 0px 5px 16px #666 !important;
+    text-transform: uppercase;
+  }
+
+  .input__container {
+    margin: 0;
+  }
+
+  > button {
+    background-color: $color-neutral-300;
+    border: 1px solid $color-neutral-300;
+    color: $color-neutral-700;
+    font-size: 1em;
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 16px #666 !important;
+  }
+}

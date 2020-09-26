@@ -1,4 +1,13 @@
 .modal {
+  position: relative;
+  background: linear-gradient(90deg, $color-start 0%, $color-end 100%);
+  box-shadow: 0 0 1px rgba($color-black, 0.3), 0 4px 8px rgba($color-black, 0.25);
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+
+  &__background {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -9,22 +18,51 @@
     justify-content: center;
     z-index: 10;
     background-color: rgba($color-black, 0.5);
+  }
 
-    &__close {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        padding: 0.9rem;
-        background: $color-neutral-200;
-        border: 2px solid $color-neutral-600;
-        border-radius: 1000rem;
-    }
+  &__close {
+    color: $color-neutral-800;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.9rem;
+    background: $color-neutral-200;
+    border: 2px solid $color-neutral-600;
+    border-radius: 1000rem;
+    z-index: 3;
 
-    &__content {
-        position: relative;
-        background-color: $color-neutral;
-        box-shadow: 0 0 1px rgba($color-black, 0.3), 0 4px 8px rgba($color-black, 0.25);
-        border-radius: 3px;
-        overflow: hidden;
+    > svg {
+      display: flex;
     }
+  }
+
+  &__content {
+    max-height: 94vh;
+    overflow: auto;
+    position: relative;
+    width: 100%;
+  }
+
+  &__container {
+    background-color: $color-neutral;
+    border-radius: 24px 24px 0px 0px;
+    margin-top: 135px;
+    > div {
+      padding: 0 15px;
+      position: relative;
+      top: -100px;
+    }
+  }
+
+  &__action {
+    bottom: 25px;
+    position: absolute;
+    width: 100%;
+
+    > button {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+    }
+  }
 }

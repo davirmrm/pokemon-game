@@ -1,6 +1,86 @@
 .map {
-    position: relative;
-    height: 100vh;
-    background: url('../../images/pageBackground.png') center;
-    background-size: cover;
+  align-items: center;
+  background: url('../../images/pageBackground.png') center;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
+}
+
+.gamer {
+  background: transparent;
+  border: none;
+  display: block;
+  position: relative;
+  height: 60px;
+  width: 50px;
+
+  &.caca {
+    background: url('../../images/ashFront.png') no-repeat;
+
+    &:before {
+      background: url('../../images/searchTooltip.png') no-repeat;
+    }
+  }
+
+  &.cacando {
+    background: url('../../images/ashLeftLeg.png') no-repeat;
+    animation: jogadorCacando 0.7s infinite;
+
+    &:before {
+      background: url('../../images/searchingTooltip.png') no-repeat;
+      bottom: 70px;
+      opacity: 1;
+      left: -11px;
+    }
+  }
+
+  &.caca-erro {
+    background: url('../../images/ashFront.png') no-repeat;
+
+    &:before {
+      background: url('../../images/tooltipError.png') no-repeat;
+    }
+  }
+
+  &:before {
+    content: '';
+    height: 60px;
+    width: 70px;
+    display: block;
+    position: absolute;
+    bottom: 50px;
+    opacity: 0;
+  }
+  &:hover {
+    &:before {
+      animation: dialogoMove 1s;
+      bottom: 70px;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes dialogoMove {
+  0% {
+    bottom: 50px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 70px;
+    opacity: 1;
+  }
+}
+
+@keyframes jogadorCacando {
+  0% {
+    background: url('../../images/ashLeftLeg.png') no-repeat;
+  }
+  50% {
+    background: url('../../images/ashRightLeg.png') no-repeat;
+  }
+  100% {
+    background: url('../../images/ashLeftLeg.png') no-repeat;
+  }
 }

@@ -1,14 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-
-import './index.scss';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { Store } from './helpers/Store'
+import 'typeface-roboto'
+import './index.scss'
+import App from './App'
 
 const app = (
-    <BrowserRouter> 
-        <App />
-    </BrowserRouter>
-);
+  <Provider store={Store}>
+    <App />
+  </Provider>
+)
 
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render(app, document.getElementById('root'))
