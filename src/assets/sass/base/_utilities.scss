@@ -1,73 +1,116 @@
 .type {
   &--bug {
     background-color: #87950c;
+    color: $color-neutral;
   }
 
   &--dark {
     background-color: #413831;
+    color: $color-neutral;
   }
 
   &--dragon {
     background-color: #7361d1;
+    color: $color-neutral;
   }
 
   &--electric {
     background-color: #e08d00;
+    color: $color-neutral;
   }
 
   &--fairy {
     background-color: #e29fe6;
+    color: $color-neutral;
   }
 
   &--fighting {
     background-color: #852816;
+    color: $color-neutral;
   }
 
   &--fire {
     background-color: #cf2c03;
+    color: $color-neutral;
   }
 
   &--flying {
     background-color: #8fa4ff;
+    color: $color-neutral;
   }
 
   &--ghost {
     background-color: #6969af;
+    color: $color-neutral;
   }
 
   &--grass {
     background-color: #67af32;
+    color: $color-neutral;
   }
 
   &--ground {
     background-color: #c5a455;
+    color: $color-neutral;
   }
 
   &--ice {
     background-color: #b4edf8;
+    color: $color-black;
   }
 
   &--normal {
     background-color: #c4c0b4;
+    color: $color-black;
   }
 
   &--poison {
     background-color: #924990;
+    color: $color-neutral;
   }
 
   &--psychic {
     background-color: #e25484;
+    color: $color-neutral;
   }
 
   &--rock {
     background-color: #5e491c;
+    color: $color-neutral;
   }
 
   &--steel {
     background-color: #7f8488;
+    color: $color-neutral;
   }
 
   &--water {
     background-color: #3b9bf1;
+    color: $color-neutral;
+  }
+}
+
+.input {
+  &--error {
+    input {
+      border-color: #ff3d71;
+    }
+    span {
+      color: #ff3d71;
+      display: block;
+      margin-top: 5px;
+    }
+  }
+}
+.dropdown {
+  &--error {
+    > button {
+      border-color: #ff3d71;
+    }
+    span {
+      color: #ff3d71;
+      display: block;
+      margin-top: 5px;
+    }
   }
 }

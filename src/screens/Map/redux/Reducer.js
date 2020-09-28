@@ -8,7 +8,8 @@ import {
   ATUALIZAR_POKEMON,
   CHANGE_INFORMACAO,
   EDITAR_STATUS,
-  JOGADOR_STATUS
+  JOGADOR_STATUS,
+  VALIDACAO_ERROR
 } from './Actions'
 
 const pokemonDefault = {
@@ -19,10 +20,10 @@ const pokemonDefault = {
   defesa: '',
   defesaEspecial: '',
   habilidades: [],
-  habilidade1: {},
-  habilidade2: {},
-  habilidade3: {},
-  habilidade4: {},
+  habilidade1: '',
+  habilidade2: '',
+  habilidade3: '',
+  habilidade4: '',
   hp: '',
   nome: '',
   peso: '',
@@ -36,13 +37,16 @@ const initialState = {
   tipos: [],
   modalStatus: '',
   editarStatus: false,
-  jogadorStatus: 'cacar'
+  jogadorStatus: 'cacar',
+  error: {}
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case MODAL_OPEN:
       return { ...state, modalStatus: payload, pokemon: payload === 'limpar' ? pokemonDefault : state.pokemon }
+    case VALIDACAO_ERROR:
+      return { ...state, error: payload }
     case EDITAR_STATUS:
       return { ...state, editarStatus: payload }
     case JOGADOR_STATUS:
@@ -52,7 +56,7 @@ export default (state = initialState, { type, payload }) => {
     case CARREGAR_TIPOS:
       return { ...state, tipos: payload.results }
     case CARREGAR_POKEMON:
-      return { ...state, pokemon: payload }
+      return { ...state, pokemon: payload === 'limpar' ? pokemonDefault : payload }
     case CAPTURAR_POKEMON:
       return { ...state, capturados: [...state.capturados, { ...payload, id: state.capturados.length }] }
     case ATUALIZAR_POKEMON:

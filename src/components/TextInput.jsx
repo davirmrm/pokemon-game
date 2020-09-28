@@ -1,8 +1,17 @@
 import React from 'react'
 
-const TextInput = ({ className = '', label = '', placeholder = '', name = '', value = '', onChange, onBlur }) => {
+const TextInput = ({
+  className = '',
+  label = '',
+  placeholder = '',
+  name = '',
+  value = '',
+  onChange,
+  onBlur,
+  error = null
+}) => {
   return (
-    <div className={`${className} input__container`}>
+    <div className={`${className} input__container ${error ? 'input--error' : ''}`}>
       {label && <label className='input__label'>{label}</label>}
       <input
         className='input'
@@ -13,6 +22,7 @@ const TextInput = ({ className = '', label = '', placeholder = '', name = '', va
         placeholder={placeholder}
         name={name}
       />
+      {error ? <span className='input__mensage'>{error}</span> : null}
     </div>
   )
 }

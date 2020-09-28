@@ -11,6 +11,13 @@
     width: 100%;
     text-align: left;
     padding: 1.2rem 0 1.2rem 0.8rem;
+
+    span::before {
+      content: ' - ';
+    }
+    span:first-child::before {
+      display: none;
+    }
   }
 
   &__container {
@@ -51,6 +58,16 @@
     &:hover {
       background-color: $color-neutral-400;
       cursor: pointer;
+    }
+
+    &.selected {
+      background-color: $color-green;
+      color: $color-neutral;
+
+      &:hover {
+        background-color: $color-green;
+        color: $color-neutral;
+      }
     }
   }
 }

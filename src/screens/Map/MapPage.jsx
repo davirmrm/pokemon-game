@@ -6,15 +6,47 @@ import CacarPokemonModal from './conteudo/CacarPokemonModal'
 import CriarPokemonModal from './conteudo/CriarPokemonModal'
 import VerPokemonModal from './conteudo/VerPokemonModal'
 import Jogador from './conteudo/Jogador'
-import { CapturarPokemon, CloseModal, EditarPokemon, LiberarPokemon } from './redux/Actions'
+import {
+  CacarPokemonCarai,
+  CapturarPokemon,
+  CloseModal,
+  EditarPokemon,
+  LiberarPokemon,
+  ValidacaoErro
+} from './redux/Actions'
 import Button from '../../components/Button'
 import { IcoPokebola } from '../../components/Icone'
+import { ValidacaoCampos } from '../../components/Validation'
 
 export default () => {
   const dispatch = useDispatch()
   const modalStatus = useSelector(state => state.mapState.modalStatus)
   const pokemon = useSelector(state => state.mapState.pokemon)
 
+  const pokemonDefault = {
+    altura: '',
+    ataque: '',
+    ataqueEspecial: '',
+    defesa: '',
+    defesaEspecial: '',
+    habilidade1: '',
+    habilidade2: '',
+    habilidade3: '',
+    habilidade4: '',
+    hp: '',
+    nome: '',
+    peso: '',
+    tipos: [],
+    velocidade: ''
+  }
+
+  const CriarValidacao = parms => {
+    const mensagemErro = ValidacaoCampos(parms, pokemonDefault)
+    if (mensagemErro.length !== 0) return dispatch(ValidacaoErro(mensagemErro))
+
+    dispatch(parms.idMeu ? EditarPokemon(parms) : CapturarPokemon({ ...parms, idMeu: true }))
+  }
+  dispatch(CacarPokemonCarai())
   return (
     <>
       <Sidebar />
@@ -34,12 +66,7 @@ export default () => {
         open={modalStatus === 'criarPokemon'}
         close={() => dispatch(CloseModal())}
         action={
-          <Button
-            text={pokemon.idMeu ? 'EDITAR POKEMON' : 'CRIAR POKEMON'}
-            onClick={() =>
-              dispatch(pokemon.idMeu ? EditarPokemon(pokemon) : CapturarPokemon({ ...pokemon, idMeu: true }))
-            }
-          />
+          <Button text={pokemon.idMeu ? 'EDITAR POKEMON' : 'CRIAR POKEMON'} onClick={() => CriarValidacao(pokemon)} />
         }
       >
         <CriarPokemonModal />

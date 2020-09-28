@@ -19,11 +19,11 @@ export default () => {
           </h3>
           <h3>
             <small>ALTURA</small>
-            {`${pokemon.altura / 10} m`}
+            {`${pokemon.altura / 100} m`}
           </h3>
           <h3>
             <small>PESO</small>
-            {`${pokemon.peso / 10} kg`}
+            {`${pokemon.peso / 100} kg`}
           </h3>
         </div>
       </div>
@@ -31,8 +31,8 @@ export default () => {
         <span>TIPO</span>
       </h3>
       <div className='dados__tipo'>
-        {pokemon.tipos.map(t => (
-          <span className={`dados__tipo__item ${t.slot === 2 ? 'purple' : ''}`} key={t.slot}>
+        {pokemon.tipos.map((t, i) => (
+          <span key={'t-' + i} className={`dados__tipo__item type--${t.name.toLowerCase()}`}>
             {t.name}
           </span>
         ))}
@@ -41,7 +41,11 @@ export default () => {
         <span>HABILIDADE</span>
       </h3>
       <div className='dados__habilidades'>
-        <p>{pokemon.habilidades.map((h, i) => `${i === 0 ? '' : ' - '}${h.name}`)}</p>
+        <p>
+          {pokemon.habilidades.map((h, i) => (
+            <span key={'h-' + i}>{`${i === 0 ? '' : ' - '}${h.name}`}</span>
+          ))}
+        </p>
       </div>
       <h3 className='dados__titulo'>
         <span>ESTATÍSTICAS</span>

@@ -38,6 +38,11 @@ export const AtualizarPokemon = e => ({
   payload: e
 })
 
+export const VALIDACAO_ERROR = 'VALIDACAO_ERROR'
+export const ValidacaoErro = e => ({
+  type: VALIDACAO_ERROR,
+  payload: e
+})
 export const JOGADOR_STATUS = 'JOGADOR_STATUS'
 export const setJogadorStatus = e => ({
   type: JOGADOR_STATUS,
@@ -75,9 +80,9 @@ export const CacarPokemon = () => {
           }),
           velocidade: pokemon.stats[5].base_stat
         }
-        setTimeout(function () {
-          dispatch([setCarregarPokemon(pokemonDefault), setJogadorStatus('caca'), modalOpen('cacarPokemon')])
-        }, 1000)
+        console.log(pokemon, 'cCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC')
+
+        dispatch([setCarregarPokemon(pokemonDefault), setJogadorStatus('caca'), modalOpen('cacarPokemon')])
       })
       .catch(error => {
         console.log(error)
@@ -130,7 +135,7 @@ const setCapturar = e => ({
   payload: e
 })
 
-export const CapturarPokemon = e => [setCapturar(e), modalClose(), setCarregarPokemon({})]
+export const CapturarPokemon = e => [setCapturar(e), modalClose(), setCarregarPokemon('limpar')]
 export const EditarPokemon = e => [AtualizarPokemon(e), modalClose()]
 
 export const LIBERAR_POKEMON = 'LIBERAR_POKEMON'
@@ -140,3 +145,21 @@ const setLiberar = e => ({
 })
 
 export const LiberarPokemon = e => [setLiberar(e), modalClose()]
+
+export const CacarPokemonCarai = () => {
+  const tra = {
+    q: ['Hello world', 'My name is Jeff'],
+    target: 'pt'
+  }
+  return dispatch => {
+    axios
+      .post(`https://translation.googleapis.com/language/translate/v2`, tra)
+      .then(resposta => {
+        const pokemon = resposta.data
+        console.log(pokemon, 'cCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCacarPokemonCarai')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+}

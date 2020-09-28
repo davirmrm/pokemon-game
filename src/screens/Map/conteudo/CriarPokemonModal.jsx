@@ -6,11 +6,13 @@ import Dropdown from '../../../components/Dropdown'
 import { CarregarTipos, ChangeInformacao } from '../redux/Actions'
 import { IcoCameraAdd } from '../../../components/Icone'
 import AddFoto from '../../../components/AddFoto'
+import { ValidacaoCampo } from '../../../components/Validation'
 
 export default () => {
   const dispatch = useDispatch()
   const Tipos = useSelector(state => state.mapState.tipos)
   const pokemon = useSelector(state => state.mapState.pokemon)
+  const error = useSelector(state => state.mapState.error)
 
   useEffect(() => {
     dispatch(CarregarTipos())
@@ -34,7 +36,7 @@ export default () => {
         value: valor
       }
     }
-    dispatch(ChangeInformacao(habilidade))
+    dispatch([ChangeInformacao(habilidade), ValidacaoCampo(e, error)])
   }
 
   return (
@@ -64,6 +66,8 @@ export default () => {
           onChange={e => dispatch(ChangeInformacao(e))}
           value={pokemon.nome}
           placeholder='Nome'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.nome ? 'Mensagem de erro' : null}
         />
         <NumberInput
           name='hp'
@@ -71,6 +75,8 @@ export default () => {
           onChange={e => dispatch(ChangeInformacao(e))}
           value={pokemon.hp}
           placeholder='HP'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.hp ? 'Mensagem de erro' : null}
         />
         <NumberInput
           name='altura'
@@ -79,6 +85,8 @@ export default () => {
           placeholder='Altura'
           value={pokemon.altura}
           suffix='Cm'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.altura ? 'Mensagem de erro' : null}
         />
         <NumberInput
           name='peso'
@@ -87,6 +95,8 @@ export default () => {
           placeholder='Peso'
           value={pokemon.peso}
           suffix='Kg'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.peso ? 'Mensagem de erro' : null}
         />
       </div>
       <h3 className='dados__titulo'>
@@ -99,6 +109,9 @@ export default () => {
           select={e => dispatch(ChangeInformacao(e))}
           options={Tipos}
           selected={pokemon.tipos}
+          validation={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.tipos ? 'Mensagem de erro' : null}
+          multiple='2'
         />
       </div>
       <h3 className='dados__titulo'>
@@ -111,6 +124,7 @@ export default () => {
           onBlur={e => CriaHabilidade(e)}
           value={pokemon.habilidade1.name}
           placeholder='Habilidade 1'
+          error={error.habilidade1 ? 'Mensagem de erro' : null}
         />
         <TextInput
           name='habilidade2'
@@ -118,6 +132,7 @@ export default () => {
           onBlur={e => CriaHabilidade(e)}
           value={pokemon.habilidade2.name}
           placeholder='Habilidade 2'
+          error={error.habilidade2 ? 'Mensagem de erro' : null}
         />
         <TextInput
           name='habilidade3'
@@ -125,6 +140,7 @@ export default () => {
           onBlur={e => CriaHabilidade(e)}
           value={pokemon.habilidade3.name}
           placeholder='Habilidade 3'
+          error={error.habilidade3 ? 'Mensagem de erro' : null}
         />
         <TextInput
           name='habilidade4'
@@ -132,6 +148,7 @@ export default () => {
           onBlur={e => CriaHabilidade(e)}
           value={pokemon.habilidade4.name}
           placeholder='Habilidade 4'
+          error={error.habilidade4 ? 'Mensagem de erro' : null}
         />
       </div>
       <h3 className='dados__titulo'>
@@ -144,6 +161,8 @@ export default () => {
           onChange={e => dispatch(ChangeInformacao(e))}
           value={pokemon.defesa}
           placeholder='00'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.defesa ? 'Mensagem de erro' : null}
         />
         <NumberInput
           name='ataque'
@@ -151,6 +170,8 @@ export default () => {
           onChange={e => dispatch(ChangeInformacao(e))}
           value={pokemon.ataque}
           placeholder='00'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.ataque ? 'Mensagem de erro' : null}
         />
         <NumberInput
           name='defesaEspecial'
@@ -158,6 +179,8 @@ export default () => {
           onChange={e => dispatch(ChangeInformacao(e))}
           value={pokemon.defesaEspecial}
           placeholder='00'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.defesaEspecial ? 'Mensagem de erro' : null}
         />
         <NumberInput
           name='ataqueEspecial'
@@ -165,6 +188,8 @@ export default () => {
           onChange={e => dispatch(ChangeInformacao(e))}
           value={pokemon.ataqueEspecial}
           placeholder='00'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.ataqueEspecial ? 'Mensagem de erro' : null}
         />
         <NumberInput
           name='velocidade'
@@ -172,6 +197,8 @@ export default () => {
           onChange={e => dispatch(ChangeInformacao(e))}
           value={pokemon.velocidade}
           placeholder='00'
+          onBlur={e => dispatch(ValidacaoCampo(e, error))}
+          error={error.velocidade ? 'Mensagem de erro' : null}
         />
       </div>
     </>

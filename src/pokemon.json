@@ -1,0 +1,22 @@
+[
+  { "name": "normal", "pt-br": "Normal" },
+  { "name": "fighting", "pt-br": "Lutador" },
+  { "name": "flying", "pt-br": "Voador" },
+  { "name": "poison", "pt-br": "Venenoso" },
+  { "name": "ground", "pt-br": "Terrestre" },
+  { "name": "rock", "pt-br": "Pedra" },
+  { "name": "bug", "pt-br": "Inseto" },
+  { "name": "ghost", "pt-br": "Fantasma" },
+  { "name": "steel", "pt-br": "Aço" },
+  { "name": "fire", "pt-br": "Fogo" },
+  { "name": "water", "pt-br": "Água" },
+  { "name": "grass", "pt-br": "Planta" },
+  { "name": "electric", "pt-br": "Elétrico" },
+  { "name": "psychic", "pt-br": "Psíquico" },
+  { "name": "ice", "pt-br": "Gelo" },
+  { "name": "dragon", "pt-br": "Dragão" },
+  { "name": "dark", "pt-br": "Sombrio" },
+  { "name": "fairy", "pt-br": "Fada" },
+  { "name": "unknown", "pt-br": "Desconhecido" },
+  { "name": "shadow", "pt-br": "Noturno" }
+]
