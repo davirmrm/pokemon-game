@@ -2,7 +2,16 @@ import React, { useRef, useState } from 'react'
 import chevron from '../assets/images/chevronDownBlack.png'
 import useOutsideClick from './Useoutsideclick'
 
-const Dropdown = ({ name, options, multiple = false, selected, select, validation, error = null }) => {
+const Dropdown = ({
+  name,
+  options,
+  multiple = false,
+  selected,
+  select,
+  validation,
+  error = null,
+  labelCustom = 'name'
+}) => {
   const labelDefault = 'Selecione o(s) tipo(s)'
   const [dropdownState, setDropdownState] = useState({ open: false })
 
@@ -42,7 +51,7 @@ const Dropdown = ({ name, options, multiple = false, selected, select, validatio
         className='dropdown__selected'
         onClick={() => setDropdownState({ ...dropdownState, open: !dropdownState.open })}
       >
-        {selected.length === 0 ? labelDefault : selected.map(s => <span key={s.name}>{s.name}</span>)}
+        {selected.length === 0 ? labelDefault : selected.map(s => <span key={s[labelCustom]}>{s[labelCustom]}</span>)}
         <img src={chevron} className='dropdown__icon' alt='Chevron' />
       </button>
       {dropdownState && dropdownState.open ? (
@@ -60,7 +69,7 @@ const Dropdown = ({ name, options, multiple = false, selected, select, validatio
                 className={`dropdown__option ${verifySelected(option) ? 'selected' : ''}`}
                 onClick={() => selectChange(option)}
               >
-                {option.name}
+                {option[labelCustom]}
               </div>
             ))}
         </div>

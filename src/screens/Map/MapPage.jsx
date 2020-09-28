@@ -6,17 +6,11 @@ import CacarPokemonModal from './conteudo/CacarPokemonModal'
 import CriarPokemonModal from './conteudo/CriarPokemonModal'
 import VerPokemonModal from './conteudo/VerPokemonModal'
 import Jogador from './conteudo/Jogador'
-import {
-  CacarPokemonCarai,
-  CapturarPokemon,
-  CloseModal,
-  EditarPokemon,
-  LiberarPokemon,
-  ValidacaoErro
-} from './redux/Actions'
+import { CapturarPokemon, CloseModal, EditarPokemon, LiberarPokemon, ValidacaoErro } from './redux/Actions'
 import Button from '../../components/Button'
 import { IcoPokebola } from '../../components/Icone'
 import { ValidacaoCampos } from '../../components/Validation'
+// import translate from '@vitalets/google-translate-api'
 
 export default () => {
   const dispatch = useDispatch()
@@ -46,7 +40,7 @@ export default () => {
 
     dispatch(parms.idMeu ? EditarPokemon(parms) : CapturarPokemon({ ...parms, idMeu: true }))
   }
-  dispatch(CacarPokemonCarai())
+
   return (
     <>
       <Sidebar />

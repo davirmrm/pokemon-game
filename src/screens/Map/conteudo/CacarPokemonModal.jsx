@@ -1,9 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { IcoAtaque, IcoCameraAdd, IcoDefesa, IcoVelocidade } from '../../../components/Icone'
+import tiposP from '../../../pokemon.json'
 
 export default () => {
   const pokemon = useSelector(state => state.mapState.pokemon)
+  const verifyType = t => {
+    const tipoFiltro = tiposP.type.filter(tipo => tipo.name === t.name)
+    return tipoFiltro[0].nome.toUpperCase()
+  }
 
   return (
     <>
@@ -33,7 +38,7 @@ export default () => {
       <div className='dados__tipo'>
         {pokemon.tipos.map((t, i) => (
           <span key={'t-' + i} className={`dados__tipo__item type--${t.name.toLowerCase()}`}>
-            {t.name}
+            {verifyType(t)}
           </span>
         ))}
       </div>

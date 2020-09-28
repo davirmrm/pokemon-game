@@ -76,11 +76,10 @@ export const CacarPokemon = () => {
           nome: ajustText(pokemon.name, true),
           peso: pokemon.weight * 10,
           tipos: pokemon.types.map(t => {
-            return { id: t.slot, name: ajustText(t.type.name, true) }
+            return { id: t.slot, name: t.type.name } //ajustText(t.type.name, true) }
           }),
           velocidade: pokemon.stats[5].base_stat
         }
-        console.log(pokemon, 'cCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC')
 
         dispatch([setCarregarPokemon(pokemonDefault), setJogadorStatus('caca'), modalOpen('cacarPokemon')])
       })
@@ -145,21 +144,3 @@ const setLiberar = e => ({
 })
 
 export const LiberarPokemon = e => [setLiberar(e), modalClose()]
-
-export const CacarPokemonCarai = () => {
-  const tra = {
-    q: ['Hello world', 'My name is Jeff'],
-    target: 'pt'
-  }
-  return dispatch => {
-    axios
-      .post(`https://translation.googleapis.com/language/translate/v2`, tra)
-      .then(resposta => {
-        const pokemon = resposta.data
-        console.log(pokemon, 'cCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCacarPokemonCarai')
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-}

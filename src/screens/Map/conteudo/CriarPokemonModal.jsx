@@ -7,10 +7,11 @@ import { CarregarTipos, ChangeInformacao } from '../redux/Actions'
 import { IcoCameraAdd } from '../../../components/Icone'
 import AddFoto from '../../../components/AddFoto'
 import { ValidacaoCampo } from '../../../components/Validation'
+import tiposP from '../../../pokemon.json'
 
 export default () => {
   const dispatch = useDispatch()
-  const Tipos = useSelector(state => state.mapState.tipos)
+  // const Tipos = useSelector(state => state.mapState.tipos)
   const pokemon = useSelector(state => state.mapState.pokemon)
   const error = useSelector(state => state.mapState.error)
 
@@ -105,9 +106,10 @@ export default () => {
       <div>
         <Dropdown
           label=''
+          labelCustom='nome'
           name='tipos'
           select={e => dispatch(ChangeInformacao(e))}
-          options={Tipos}
+          options={tiposP.type}
           selected={pokemon.tipos}
           validation={e => dispatch(ValidacaoCampo(e, error))}
           error={error.tipos ? 'Mensagem de erro' : null}

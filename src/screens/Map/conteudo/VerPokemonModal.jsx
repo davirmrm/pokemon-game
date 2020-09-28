@@ -3,11 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { IcoAtaque, IcoCamera, IcoDefesa, IcoEditar, IcoVelocidade } from '../../../components/Icone'
 import EditarNome from './EditarNome'
 import { AddPokemon, EditarStatus } from '../redux/Actions'
+import tiposP from '../../../pokemon.json'
 
 export default () => {
   const dispatch = useDispatch()
   const pokemon = useSelector(state => state.mapState.pokemon)
   const editarStatus = useSelector(state => state.mapState.editarStatus)
+
+  const verifyType = t => {
+    const tipoFiltro = tiposP.type.filter(tipo => tipo.name === t.name)
+    return tipoFiltro[0].nome.toUpperCase()
+  }
 
   return (
     <>
@@ -42,8 +48,8 @@ export default () => {
       </h3>
       <div className='dados__tipo'>
         {pokemon.tipos.map((t, i) => (
-          <span key={'t-' + i} className={`dados__tipo__item ${t.slot === 2 ? 'purple' : ''}`}>
-            {t.name.toUpperCase()}
+          <span key={'t-' + i} className={`dados__tipo__item type--${t.name.toLowerCase()}`}>
+            {verifyType(t)}
           </span>
         ))}
       </div>
