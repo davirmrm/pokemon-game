@@ -100,7 +100,6 @@ export const CarregarHabilidades = e => {
     axios
       .get(`https://pokeapi.co/api/v2/ability?limit=500`)
       .then(resposta => {
-        console.log(resposta.data, 'respostarespostarespostarespostarespostaresposta')
         dispatch(setCarregarHabilidades(resposta.data))
       })
       .catch(error => {
