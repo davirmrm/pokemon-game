@@ -35,7 +35,7 @@ export default () => {
           </h3>
           <h3>
             <small>ALTURA</small>
-            {`${pokemon.altura / (pokemon.idMeu ? 1 : 100)} m`}
+            {`${pokemon.altura / (pokemon.idMeu ? 100 : 100)} m`}
           </h3>
           <h3>
             <small>PESO</small>

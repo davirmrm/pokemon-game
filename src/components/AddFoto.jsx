@@ -12,7 +12,13 @@ const AddFoto = ({ className = '', label = '', name = '', value = '', icon = fal
   return (
     <div className={`${className} input__fileimg`}>
       {label && <label className='input__label'>{label}</label>}
-      <input className='input' type='file' onChange={e => changeFoto(e)} name={name} />
+      <input
+        className='input'
+        type='file'
+        onChange={e => changeFoto(e)}
+        name={name}
+        accept='.png,.jpg,.jpeg.PNG,.JPG,.JPEG'
+      />
       {icon ? icon : null}
     </div>
   )

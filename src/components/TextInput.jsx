@@ -8,6 +8,7 @@ const TextInput = ({
   value = '',
   onChange,
   onBlur,
+  maxLength = null,
   error = null
 }) => {
   return (
@@ -21,6 +22,7 @@ const TextInput = ({
         value={value}
         placeholder={placeholder}
         name={name}
+        maxLength={maxLength}
       />
       {error ? <span className='input__mensage'>{error}</span> : null}
     </div>

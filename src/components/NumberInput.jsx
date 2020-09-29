@@ -1,7 +1,18 @@
 import React from 'react'
 import chevron from '../assets/images/chevronDownBlack.png'
 
-const NumberInput = ({ className = '', label, placeholder, name, value, suffix, onChange, onBlur, error = null }) => {
+const NumberInput = ({
+  className = '',
+  label,
+  placeholder,
+  name,
+  value,
+  suffix,
+  onChange,
+  onBlur,
+  maxLength = null,
+  error = null
+}) => {
   const clickNumber = tipo => {
     const Valor = tipo === '+' ? (Number(value) ? Number(value) : 0) + 1 : (Number(value) ? Number(value) : 0) - 1
     const resp = { target: { type: 'number', name: name, value: Valor } }
@@ -22,6 +33,7 @@ const NumberInput = ({ className = '', label, placeholder, name, value, suffix, 
           value={value}
           onBlur={onBlur}
           onChange={e => onChange(e)}
+          max={maxLength}
         />
         {suffix && <p className='input__suffix'>{suffix}</p>}
         <div className='input__btns'>
